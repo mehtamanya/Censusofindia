@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>New user</title>
+         <!-- Cool Google Fonts -->
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Bowlby+One+SC&display=swap" rel="stylesheet">
+        <!-- Our stylesheet -->
+
+    </head>
+    <style>
+        html, body {
+    width: 100%;
+    height: 100%;
+background-color: white;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    border: none;
+    outline: none;
+}
+#content_container {
+    width: 30%;
+    height: 70%;
+}
+
+#form_container {
+    width: 100%;
+    height: 100%;
+
+    background-color: white;
+    box-shadow: 0 0 50px -20px #000;
+    border-radius: px;
+
+    overflow: hidden;
+}
+
+#form_header_container {
+    width: 100%;
+    height: 5%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    float: left;
+
+    padding: 20px;
+    padding-bottom: 30px;
+    padding-top: 30px;
+
+    border-bottom: 1px solid transparent;
+    /* border-image: -webkit-linear-gradient(25deg, #FFBE0B, #FB5607, #FF006E, #8338EC, #3A86FF) 20; */
+    background: #ffffff;
+}
+
+#form_header {
+    display: inline-block;
+    font-size: 25px;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+
+
+    background-color: #ffffff;
+      
+}
+
+#form_content_container {
+    width: 100%;
+    height: 90%;
+
+    float: left;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding-top: 30px;
+}
+
+#form_content_inner_container {
+    width: 75%;
+    height: 100%;
+
+    float: left;
+
+}
+
+input {
+    width: 100%;
+    height: 40px;
+
+    padding-left: 10px;
+    margin-bottom: 20px;
+
+    background: #ffffff;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: 500;
+    color: #000000;
+    font-size: 20px;
+
+    border-bottom: 2px solid transparent;
+    border-top-left-radius: 2%;
+    border-top-right-radius: 2%;
+    border-color: black;
+}
+
+
+#button_container button {
+    width: 250px;
+        height: 50px;
+        background-color: blue; /* Change button color to blue */
+        color: white; /* Change button text color to white */
+        font-family: 'Times New Roman', Times, serif;
+        font-size: 20px;
+        font-weight: bold;
+        border-radius: 5px;
+        cursor: pointer;
+}
+    </style>
+    <body>
+
+        <div id="content_container">
+            <div id="form_container">
+                <div id="form_header_container">
+                    <h2 id="form_header"> Create a new User </h2>
+                </div>
+
+                <div id="form_content_container">
+                    <div id="form_content_inner_container">
+                        
+                        <input type="email" id="email" placeholder="Email">
+                        <input type="password" id="password" placeholder="New Password">
+
+                
+
+                        <div id="button_container"></div>
+                            <button onclick="register()">Register</button><br><br>
+                            <button  type="button" onclick="location.href='home.html'">Create a New User</button> </center>
+                        </center>
+                       
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+      
+    </body>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+         https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
+
+    <!-- Our script must be loaded after firebase references -->
+    <script>
+        // Your web app's Firebase configuration
+var firebaseConfig = {
+    apiKey: "AIzaSyDT6uJbmKsx6RTPieWPuEY4_71MAIzcv0s",
+    authDomain: "bhartiye-census.firebaseapp.com",
+    databaseURL: "https://bhartiye-census-default-rtdb.firebaseio.com",
+    projectId: "bhartiye-census",
+    storageBucket: "bhartiye-census.appspot.com",
+    messagingSenderId: "88437168542",
+    appId: "1:88437168542:web:8fa763e02d516e94501e8f",
+    measurementId: "G-9P39SLQPS3"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  // Initialize variables
+  const auth = firebase.auth()
+  const database = firebase.database()
+  
+  // Set up our register function
+  function register () {
+    // Get all our input fields
+    email = document.getElementById('email').value
+    password = document.getElementById('password').value
+  
+    // Validate input fields
+    if (validate_email(email) == false || validate_password(password) == false) {
+      alert('Email or Password is Outta Line!!')
+      return
+      // Don't continue running the code
+    }
+   
+    // Move on with Auth
+    auth.createUserWithEmailAndPassword(email, password)
+    .then(function() {
+      // Declare user variable
+      var user = auth.currentUser
+  
+      // Add this user to Firebase Database
+      var database_ref = database.ref()
+  
+      // Create User data
+      var user_data = {
+        email : email,
+        last_login : Date.now()
+      }
+  
+      // Push to Firebase Database
+      database_ref.child('users/' + user.uid).set(user_data)
+  
+      // DOne
+      alert('User Created!!')
+    })
+    .catch(function(error) {
+      // Firebase will use this to alert of its errors
+      var error_code = error.code
+      var error_message = error.message
+  
+      alert(error_message)
+    })
+  }
+  
+  
+  // Validate Functions
+  function validate_email(email) {
+    expression = /^[^@]+@\w+(\.\w+)+\w$/
+    if (expression.test(email) == true) {
+      // Email is good
+      return true
+    } else {
+      // Email is not good
+      return false
+    }
+  }
+  
+  function validate_password(password) {
+    // Firebase only accepts lengths greater than 6
+    if (password < 6) {
+      return false
+    } else {
+      return true
+    }
+  }
+
+    </script>
+
+</html>

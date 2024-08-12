@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+</head>
+
+<style>
+  *{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Times New Roman', Times, serif;
+}
+        /* Navbar styling */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            background-color: #1a1047;
+font-size: 20px;
+text-transform: capitalize;        
+    padding: 10px 20px;
+        }
+
+        /* Navbar link styling */
+        .navbar a {
+            font-family: 'Times New Roman', Times, serif;
+            color: white;
+            text-decoration: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        /* Navbar link hover styling */
+        .navbar a:hover {
+            background-color: #555;
+        }
+
+    button {
+        color: #ffffff;
+        background-color: #1a1047;
+        padding: 12.5px 30px;
+        border: 0;
+        border-radius: 100px;
+        cursor: pointer;
+        font-weight: bold;
+        transition: all 0.5s;
+        -webkit-transition: all 0.5s;
+    }
+
+    button:hover {
+        background-color: #000000;
+        box-shadow: 0 0 20px #6fc5ff50;
+        transform: scale(1.1);
+    }
+
+    button:active {
+        background-color: #000000;
+        transition: all 0.25s;
+        -webkit-transition: all 0.25s;
+        box-shadow: none;
+        transform: scale(0.98);
+    }
+
+button.slider-button {
+    background-color: #1a1047;
+}
+  
+
+    h1 {
+        font-size: 50px;
+    }
+
+    h2 {
+        color: rgb(18, 18, 86);
+    }
+</style>
+
+<body>
+    <center>
+        <img src="logo-census-nyear.png" height="135PX" width="1200px">
+        <br>
+        <br>
+        <br>
+    </center>
+
+    <div class="navbar">
+        <a href="home.html">Home</a>
+        <a href="PopulationDetails.html"><i class="fa-solid fa-person-arrow-up-from-line"></i> Population Details </a>
+        <a href="sexratio.html">Sex Ratio</a>
+        <a href="religion.html"></i>Religion-wise Details </a>
+        <a href="maritalstatus.html">Marital Status</a>
+        <a href="literate.html">Literacy Rate</a>
+        <a href="disability.html">Disability Status</a>
+        <br>
+        <Br>
+        <a href="userdetail.html">User Details</a>
+        <a href="register.html"><i class="fa-solid fa-user"></i> New User</a>
+        <a href="aboutus.html">About Us</a>
+        <a href="contactus.html">Contact Us</a>
+        <a href="updatedetails.html">Update Details</a>
+    </div>
+    <br><br><br>
+    <div class="contact-section">
+        <div class="slider left-slider">
+            <img src="CENSUS67.jpg" alt="Left Image" class="slider-image">
+            <img src="census4.avif" alt="Left Image" class="slider-image">
+
+            <div class="slider-nav">
+                <button class="slider-button" onclick="prevSlide('left')"><</button>
+                <button class="slider-button" onclick="nextSlide('left')">></button>
+            </div>
+        </div>
+        <CENTER>
+            <div class="contact-content">
+                <h1>Contact Us</h1>
+
+                <div class="contact-group">
+                    <h2>Android App Developer</h2>
+                    <div class="contact-details">
+                        <p><strong>Name:</strong> Himanshu Padam</p>
+                        <p><strong>E-Mail:</strong> <a href="mailto:himanshupadam808@gmail.com">himanshupadam808@gmail.com</a></p>
+                        <p><strong>PhoneNo:</strong> 9872758875</p>
+                    </div>
+                </div>
+
+                <div class="contact-group">
+                    <h2>Web Development</h2>
+                    <div class="contact-details">
+                        <p><strong>Name:</strong> Manya Mehta</p>
+                        <p><strong>E-Mail:</strong> <a href="mailto:mehtamanya02@gmail.com">mehtamanya02@gmail.com</a></p>
+                        <p><strong>PhoneNo:</strong> 9592148602</p>
+                    </div>
+                </div>
+            </div>
+        </CENTER>
+
+        <div class="slider right-slider">
+            <img src="census3.jpg" alt="Right Image" class="slider-image">
+            <img src="census1.webp" alt="Right Image" class="slider-image">
+
+            <div class="slider-nav">
+                <button class="slider-button" onclick="prevSlide('right')"><</button>
+                <button class="slider-button" onclick="nextSlide('right')">></button>
+            </div>
+        </div>
+
+        <!-- Button after contact section -->
+        <!-- <div class="container-button">
+            <button>Click Me</button>
+        </div> -->
+    </div>
+
+    <style>
+        .contact-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 30px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .left-slider,
+        .right-slider {
+            flex: 1;
+            position: relative;
+        }
+
+        .slider-image {
+            width: 70%;
+            border-radius: 8px;
+        }
+
+        .slider-nav {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+        }
+
+        .slider-button {
+            padding: 10px 15px;
+            background-color: #2ba8fb;
+            color: #ffffff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .slider-button:hover {
+            background-color: #6fc5ff;
+        }
+
+        .contact-content {
+            flex: 2;
+            padding: 0 20px;
+        }
+
+        .contact-section h1 {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 30px;
+            color: #333;
+        }
+
+        .contact-group {
+            margin-bottom: 40px;
+        }
+
+        .contact-group h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #555;
+        }
+
+        .contact-details p {
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            color: #777;
+        }
+
+        .contact-details strong {
+            color: #333;
+        }
+
+        .contact-details a {
+            color: #2ba8fb;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .contact-details a:hover {
+            color: #6fc5ff;
+        }
+
+        /* Style for the button */
+        .container-button {
+            text-align: center;
+            margin-top: 30px;
+        }
+    </style>
+
+    <script>
+        let slideIndex = 1;
+
+        function prevSlide(slider) {
+            showSlides(slideIndex -= 1, slider);
+        }
+
+        function nextSlide(slider) {
+            showSlides(slideIndex += 1, slider);
+        }
+
+        function showSlides(n, slider) {
+            let slides = document.querySelectorAll(`.${slider}-slider .slider-image`);
+            if (n > slides.length) {
+                slideIndex = 1;
+            }
+            if (n < 1) {
+                slideIndex = slides.length;
+            }
+            slides.forEach(slide => slide.style.display = "none");
+            slides[slideIndex - 1].style.display = "block";
+        }
+
+        showSlides(slideIndex, 'left'); 
+        showSlides(slideIndex, 'right');
+    </script>
+</body>
+
+</html>

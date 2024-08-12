@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
+        import { getDatabase, ref, get } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-database.js";
+
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyDT6uJbmKsx6RTPieWPuEY4_71MAIzcv0s",
+            authDomain: "bhartiye-census.firebaseapp.com",
+            databaseURL: "https://bhartiye-census-default-rtdb.firebaseio.com",
+            projectId: "bhartiye-census",
+            storageBucket: "bhartiye-census.appspot.com",
+            messagingSenderId: "88437168542",
+            appId: "1:88437168542:web:8fa763e02d516e94501e8f",
+            measurementId: "G-9P39SLQPS3"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+
+      // Function to fetch Aadhar details
+      function fetchDetails() {
+            const aadharNumber = document.getElementById('aadharNumber').value;
+            const dbRef = ref(getDatabase(app), 'Census Entry/' + aadharNumber);
+            get(dbRef).then((snapshot) => {
+                const data = snapshot.val();
+                if (data) {
+                    // Display the details on the webpage
+                    document.getElementById('aadharName').textContent = data.name;
+                    document.getElementById('headOfFamily').textContent = data.headOfFamily;
+                    // Show the details container
+                    document.getElementById('aadharDetails').style.display = 'block';
+                    // Redirect to fetchDetails.html
+                    window.location.href = "fetchDetails.html";
+                } else {
+                    console.log("Aadhar number not found");
+                    // Notify user that Aadhar number is not found
+                }
+            }).catch((error) => {
+                console.error("Error fetching data:", error);
+            });
+        }
+    </script>
+</body>
+</html>

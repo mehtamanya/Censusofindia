@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>New user</title>
+    <!-- Cool Google Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bowlby+One+SC&display=swap" rel="stylesheet">
+    <!-- Our stylesheet -->
+    <style>
+        html, body {
+            width: 100%;
+            height: 100%;
+            background-color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            border: none;
+            outline: none;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            background-color: #1a1047;
+            font-size: 20px;
+            width: 100%;
+            padding: 10px 20px;
+        }
+
+        .navbar a {
+          font-family: 'Times New Roman', Times, serif;
+
+            color: white;
+            text-decoration: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .navbar a:hover {
+            background-color: #555;
+        }
+
+        .census-logo {
+            width: 1200px;
+            max-width: 100%;
+            margin-bottom: 20px;
+        }
+
+        #content_container {
+            width: 30%;
+            height: 70%;
+        }
+
+        #form_container {
+    width: 100%;
+    max-width: 500px;
+   /* Adjust the width as needed */
+    margin: 20px;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+}
+
+#form_header_container {
+    text-align: center;
+    margin-bottom: 40px;
+    margin-top: 20px;
+}
+
+#form_header {
+    font-size: 30px;
+    color: #000000;
+    
+}
+
+#form_content_container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+     
+
+.form_input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 25px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+
+        input {
+            width: 100%;
+            height: 40px;
+            padding-left: 10px;
+            margin-bottom: 20px;
+            background: #ffffff;
+            font-family: 'Times New Roman', Times, serif;
+            font-weight: 500;
+            color: #000000;
+            font-size: 20px;
+            border-bottom: 2px solid #000;
+        }
+        #button_container {
+    width: 100%;
+    text-align: center;
+}
+
+.form_button {
+    width: 100%;
+    padding: 10px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.form_button:hover {
+    background-color: #555;
+}
+         /* #button_container button {
+            width: 250px;
+            height: 50px;
+            background-color: #000000;
+            color: white;
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 20px;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+        } */
+    </style>  
+    </head>
+    <body>
+      <center>
+        <img src="logo-census-nyear.png" alt="Census Logo" class="census-logo">    <br>
+    <br>
+    <br> </center>
+      <div class="navbar">
+        <a href="home.html"> Home</a>
+        <a href="PopulationDetails.html"><i class="fa-solid fa-person-arrow-up-from-line"></i> Population Details </a>
+        <a href="sexratio.html"> Sex Ratio </a>
+        <a href="religion.html"></i>Religion-wise Details </a>
+        <a href="maritalstatus.html"> Marital Status </a>
+        <a href="literate.html"> Literacy Rate </a>
+        <a href="disability.html"> Disability Status </a> <br> <Br>
+        <a href="userdetail.html"> User Details</a>
+        <a href="register.html"><i class="fa-solid fa-user"></i> New User</a>
+        <a href="aboutus.html">  About Us </a>
+        <a href="contactus.html">  Contact Us </a>
+        <a href="updatedetails.html"> Update Details </a>
+        <!-- Add other navbar links as needed -->
+    </div><br><br>
+    <div id="content_container">
+      <div id="form_container">
+          <div id="form_header_container">
+              <h2 id="form_header">Create a New User</h2>
+          </div>
+          <div id="form_content_inner_container">
+            <input type="text" id="name" placeholder="Name" class="form_input"> <!-- Add this line for the name field -->
+            <input type="email" id="email" placeholder="Email" class="form_input">
+            <input type="password" id="password" placeholder="New Password" class="form_input">
+            <div id="button_container">
+                <button onclick="register()" class="form_button">Register</button><br><br>
+                <button type="button" onclick="location.href='home.html'" class="form_button">GO TO HOME</button>
+            </div>
+        </div>
+        
+          </div>
+      </div>
+  </div>
+  
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+         https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
+
+    <!-- Our script must be loaded after firebase references -->
+    <script>
+        // Your web app's Firebase configuration
+var firebaseConfig = {
+    apiKey: "AIzaSyDT6uJbmKsx6RTPieWPuEY4_71MAIzcv0s",
+    authDomain: "bhartiye-census.firebaseapp.com",
+    databaseURL: "https://bhartiye-census-default-rtdb.firebaseio.com",
+    projectId: "bhartiye-census",
+    storageBucket: "bhartiye-census.appspot.com",
+    messagingSenderId: "88437168542",
+    appId: "1:88437168542:web:8fa763e02d516e94501e8f",
+    measurementId: "G-9P39SLQPS3"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  // Initialize variables
+  const auth = firebase.auth()
+  const database = firebase.database()
+
+  // Set up our register function
+function register() {
+    // Get all our input fields
+    var name = document.getElementById('name').value; // Get the name value
+    var email = document.getElementById('email').value;
+    var password = document.getElementById('password').value;
+
+    // Validate input fields
+    if (validate_name(name) == false || validate_email(email) == false || validate_password(password) == false) {
+        alert('Name, Email, or Password is Outta Line!!');
+        return;
+    }
+   
+    // Move on with Auth
+    auth.createUserWithEmailAndPassword(email, password)
+        .then(function(userCredential) {
+            // Declare user variable
+            var user = userCredential.user;
+
+            // Additional data to be stored in Realtime Database
+            var user_data = {
+                name: name, // Include the name in user data
+                email: email,
+                last_login: Date.now()
+            };
+
+            // Push user data to Realtime Database under "users" node
+            database.ref('users/' + user.uid).set(user_data);
+
+            // Done
+            alert('User Created!!');
+        })
+      
+ 
+        .catch(function(error) {
+            // Firebase will use this to alert of its errors
+            var errorCode = error.code;
+            var errorMessage = error.message;
+
+            alert(errorMessage);
+        });
+}
+
+// Validate Name Function
+function validate_name(name) {
+    if (name.trim() === '') {
+        return false;
+    } else {
+        return true;
+    }
+}
+
+  
+  // Validate Functions
+  function validate_email(email) {
+    expression = /^[^@]+@\w+(\.\w+)+\w$/
+    if (expression.test(email) == true) {
+      // Email is good
+      return true
+    } else {
+      // Email is not good
+      return false
+    }
+  }
+  
+  function validate_password(password) {
+    // Firebase only accepts lengths greater than 6
+    if (password < 6) {
+      return false
+    } else {
+      return true
+    }
+  }
+
+    </script>
+
+  
+</body>
+</html>

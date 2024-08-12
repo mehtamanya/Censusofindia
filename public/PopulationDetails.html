@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>BHARAT CENSUS</title>
+    <link rel="icon" type="image/x-icon" href="censuslogo.jpg">
+    <style>
+        button {
+            color: #ffffff;
+            align-items: center;
+            background-color: #1a1047;
+            padding: 12.5px 30px;
+            border: 0;
+            border-radius: 100px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.5s;
+            -webkit-transition: all 0.5s;
+        }
+        
+        button:hover {
+            background-color: #000000;
+            box-shadow: 0 0 20px #6fc5ff50;
+            transform: scale(1.1);
+        }
+        
+        button:active {
+            background-color: #000000;
+            transition: all 0.25s;
+            -webkit-transition: all 0.25s;
+            box-shadow: none;
+            transform: scale(0.98);
+        }
+        
+        .image-with-text {
+            font-size: 22px;
+            display: flex;
+            align-items: center;
+            /* margin-bottom: 50px; */
+        }
+        
+        .image-with-text img {
+            width: 120px;
+            height: 120px;
+            margin-right: 60px;
+            margin-left: 500px;
+        }
+                 .loader-container {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        position: fixed;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        background-color: white;
+                        /* background-color: rgba(0, 0, 0, 0.5); */
+                        z-index: 9999;
+                        }
+
+                        .loader {
+                        border: 8px solid #f3f3f3;
+                        border-radius: 50%;
+                        border-top: 8px solid #3498db;
+                        width: 60px;
+                        height: 60px;
+                        animation: spin 2s linear infinite;
+                        }
+
+                        @keyframes spin {
+                        0% { transform: rotate(0deg); }
+                        100% { transform: rotate(360deg); }
+                        }              
+     table {
+
+    width: 50%;
+    margin: 0 auto;
+    border-collapse: collapse;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+}
+
+    th, td {
+    font-size: 120x;
+        padding: 10px 10px;
+        text-align: left;
+    }
+    th {
+        font-size: 14px;
+        background-color: #000000;
+        color: #fff;
+        font-family: 'Times New Roman', Times, serif;
+    }
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+    tr:hover {
+        background-color: #ddd;
+    }
+    #userDataBody {
+        text-align: center;
+    }
+          /* body styling */
+          *{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Times New Roman', Times, serif;
+}
+        /* Navbar styling */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            background-color: #1a1047;
+font-size: 20px;
+text-transform: capitalize;        
+    padding: 10px 20px;
+        }
+
+        /* Navbar link styling */
+        .navbar a {   
+            font-family: 'Times New Roman', Times, serif;
+            color: white;
+            text-decoration: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        /* Navbar link hover styling */
+        .navbar a:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+
+<body>
+   
+    <center>
+        <img src="logo-census-nyear.png" height="135PX" width="1200px">
+    <br>
+    <br>
+    <br> </center>
+
+<div class="navbar">
+    <a href="home.html"> Home</a>
+        <a href="PopulationDetails.html"><i class="fa-solid fa-person-arrow-up-from-line"></i> Population Details </a>
+        <a href="sexratio.html"> Sex Ratio </a>
+        <a href="religion.html"></i>Religion-wise Details </a>
+        <a href="maritalstatus.html"> Marital Status </a>
+        <a href="literate.html"> Literacy Rate </a>
+        <a href="disability.html"> Disability Status </a> <br> <Br>
+        <a href="userdetail.html"> User Details</a>
+        <a href="register.html"><i class="fa-solid fa-user"></i> New User</a>
+        <a href="aboutus.html">  About Us </a>
+        <a href="contactus.html">  Contact Us </a>
+        <a href="updatedetails.html"> Update Details </a>
+</div>
+        <br>
+        <div class="image-with-text">
+            <img src="population.jpg" alt="population" height="100px" width="100px">
+            <h1> Population Details</h1>
+        </div>
+        <div class="loader-container" id="loader">
+            <div class="loader"></div>
+          </div>
+<div id="content">
+        <table border="2">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Head of family</th>
+                    <th> Relationship with Head</th>
+                    <th>Aadhar Number</th>
+                    <th>Gender</th>
+                    <th>Father Name</th>
+                    <th> Religion</th>
+                    <th> Caste</th>
+                    <th> Literacy Status</th>
+                    <th>Last class studies</th>
+                    <th>Marital status</th>
+                    <th>Age at marriage</th>
+                    <th>Mother tongue</th>
+                    <th>Other language known</th>
+                    <th>Date of Birth</th>
+                    <th>Age</th>
+                    <th>Occupation</th>
+                    <th>Address</th>
+                    <th>District</th>
+                    <th>State</th>
+                    <th>birth Mark</th>
+                    <th>Type of Disability</th>
+                    <th>Image</th>
+
+
+                </tr>
+            </thead>
+            <tbody id="userDataBody">
+                <!-- User data will be populated here -->
+            </tbody>
+        </table>
+    </div>
+    <br> <br>
+   
+    <script type="module">
+       // Import the functions you need from the SDKs you need
+       import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
+        import { getDatabase, ref, get } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-database.js";
+
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyDT6uJbmKsx6RTPieWPuEY4_71MAIzcv0s",
+            authDomain: "bhartiye-census.firebaseapp.com",
+            databaseURL: "https://bhartiye-census-default-rtdb.firebaseio.com",
+            projectId: "bhartiye-census",
+            storageBucket: "bhartiye-census.appspot.com",
+            messagingSenderId: "88437168542",
+            appId: "1:88437168542:web:8fa763e02d516e94501e8f",
+            measurementId: "G-9P39SLQPS3"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+
+        // Get a reference to the "user" node in the database
+        const userRef = ref(getDatabase(app), 'Census Entry');
+
+        // Retrieve data from the database
+        get(userRef).then((snapshot) => {
+            const userDataBody = document.getElementById('userDataBody');
+
+            if (snapshot.exists()) {
+                // Iterate through each child node (each user)
+                snapshot.forEach((childSnapshot) => {
+                    // Retrieve the data for each user
+                    const userData = childSnapshot.val();
+
+                    // Create a new row for the user data
+                    const row = document.createElement('tr');
+
+                    // Populate the row with user
+                    
+                    
+                    
+
+                    
+                    row.innerHTML = `
+                        <td>${userData.name}</td>
+                        <td>${userData.headOfFamily}</td>
+                        <td>${userData.relationshipWithHead}</td>
+                        <td>${userData.aadharNo}</td>
+                        <td>${userData.gender}</td>
+                        <td>${userData.fathersName}</td>
+                        <td>${userData.religion}</td>
+                        <td>${userData.caste}</td>
+                        <td>${userData.literacyStatus}</td>
+                        <td>${userData.lastClassStudied}</td>
+                        <td>${userData.maritalStatus}</td>
+                        <td>${userData.ageAtMarriage}</td>
+                        <td>${userData.motherTongue}</td>
+                        <td>${userData.otherLanguagesKnown}</td>
+                        <td>${userData.dateOfBirth}</td>
+                        <td>${userData.age}</td>
+                        <td>${userData.occupation}</td>
+                        <td>${userData.address}</td>
+                        <td>${userData.district}</td>
+                        <td>${userData.state}</td>
+                        <td>${userData.birthmark}</td>
+                    
+                        <td>${userData.typeOfDisability}</td>
+                        <td><img src="${userData.imageUrl}" alt="User Image" style="width: 100px; height: auto;"></td>                    `;
+
+                    // Append the row to the table body
+                    userDataBody.appendChild(row);
+                });
+            } else {
+                console.log("No data available");
+            }
+        }).catch((error) => {
+            console.error("Error fetching data:", error);
+        });
+
+        document.addEventListener("DOMContentLoaded", function() {
+  setTimeout(function() {
+    var loader = document.getElementById("loader");
+    loader.style.display = "none";
+  }, 2000);
+});
+
+    </script>
+
+</div>
+<center>
+    <button type="button" onclick="location.href='home.html'">Go to Home</button> &nbsp;
+  
+<button id="downloadBtn" onclick="downloadPDF()">Download as PDF</button>
+</center>
+
+
+<!-- pdf code -->
+
+<script src="https://rawgit.com/eKoopmans/html2pdf/master/dist/html2pdf.bundle.js"></script>
+<script>
+function downloadPDF() {
+var element = document.getElementById('content');
+html2pdf(element, {
+    margin: 1,
+    filename: 'bharat_census.pdf',
+    image: { type: 'jpeg', quality: 0.98 },
+    html2canvas: { dpi: 192, letterRendering: true },
+    jsPDF: { unit: 'in', format: 'letter', orientation: 'landscape' }
+});
+} 
+// const row = document.createElement('tr');
+// // Populate the row with user data
+// row.innerHTML = `
+//     <td>${userData.name}</td>
+//     <td>${userData.headOfFamily}</td>
+//     // Other table data...
+//     <td><img src="${userData.imageUrl}" alt="User Image" style="width: 100px; height: auto;"></td>
+// `;
+
+</script>
+</body>
+
+</html>

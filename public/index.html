@@ -1,0 +1,179 @@
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>BHARAT CENSUS</title>
+        <link rel="icon" type="image/x-icon" href="censuslogo.jpg">
+       
+        <script src="https://www.gstatic.com/firebasejs/ui/6.0.1/firebase-ui-auth.js"></script>
+
+    </head>
+    <style> 
+    input {
+    width: 600px;
+    height: 35px;
+    border-radius: 5px;
+    border: 2px solid black;
+    font-size: 20px;
+}
+#button {
+    color: white;
+    background-color: darkblue;
+    height: 50px;
+    width: 200px;
+    border-radius: 0px 50px;
+    
+}
+#button:hover {
+    color: black;
+    background-color: blue;
+}
+span {
+    color: red;
+    
+}
+h1 {
+    text-align: center;
+text-decoration: underline;
+font-family: 'Times New Roman', Times, serif;
+color: black;
+}
+
+</style>
+   <center> <body> 
+    <script type="module">
+      
+      </script>
+    <img src="logo-census-nyear.png"></center><br><br>
+    <h1> LOGIN </h1><br>
+    
+        <form  autocomplete="off" onsubmit="return validation()"> 
+          
+            <center>     <table cellspacing="15" align="center">
+             
+     
+  <tr> <td> <input type="text" id="user" placeholder="Enter Username">
+       <br> <span id="userr"></span></td></tr>
+    
+       <tr> <td> <input type="text" id="email" placeholder="Enter Email">
+       <br> <span id="emaill"></span></td></tr>
+    
+       <tr> <td> <input type="password" id="pass" placeholder="Enter Password"> 
+       <br> <span id="passs"></span></td></tr>
+    
+      
+    
+    <tr><td><input type="submit" value="submit" class="sub" id="submit"></td></tr>
+     
+    
+    </table></center> 
+    </form>
+    <script type="text/javascript">
+        function validation(){
+            var user = document.getElementById('user').value;
+            var email = document.getElementById('email').value;
+            var pass = document.getElementById('pass').value;
+          
+        // //  empty
+        //   if(user == "") 
+        //     {
+        //         document.getElementById('userr').innerHTML="**please write username";  
+        //         return false;
+        //     }  
+        //     // username length is greater than 1 
+        //     if(user.length<2)
+        //     {
+        //         document.getElementById('userr').innerHTML="**please write more than one character";  
+        //         return false;
+        //     }  
+        //     //  no numbers alphabet only
+        //     if(!isNaN(user))
+        //     {
+        //         document.getElementById('userr').innerHTML="**please write Alphabet only";  
+        //         return false;
+            // }  
+            // else
+            // {
+            //     document.getElementById('userr').innerHTML="";  
+            // }
+            // // empty email
+            // if(email == "")
+            // {
+            //     document.getElementById('emaill').innerHTML="**please write email";  
+            //   return false;
+            // } 
+            // //  @ zero position pe nh ho  
+            // if(email.indexOf('@')<=0)
+            // {
+            //     document.getElementById('emaill').innerHTML="**invalid position of email";  
+            //   return false;
+            // }   
+            // if(email.charAt('@' )<=0)
+            // {
+            //     document.getElementById('emaill').innerHTML="**invalid position of email";  
+            //   return false;
+            // }   
+            // else
+            // {
+            //     document.getElementById('emaill').innerHTML="";  
+            // }  
+            // // empty password
+            // if(pass == "")
+            // {
+            //     document.getElementById('passs').innerHTML="**please write password";  
+            //   return false;
+            // }   
+    // password length should be greater than 8 letters or 8
+            // if(pass.length<8)
+            // {
+            //     document.getElementById('passs').innerHTML="**please write 8 digits password";
+            //     return false;    
+            // }  
+          
+    
+             // atleast one numeric character 
+            // if(pass.search(/[0-9]/)==-1)
+            // {
+            //     document.getElementById('passs').innerHTML="**please write password of atleast 1 numeric character in the box";   
+            //     return false; 
+            // }   
+            //  //atleast one  lower case 
+            // if(pass.search(/[a-z]/)==-1)
+            // {
+            //     document.getElementById('passs').innerHTML="**please write password of atleast 1 lowercase letter in the box";   
+            //     return false; 
+            // }  
+            // // atleast one upper case 
+            // if(pass.search(/[A-Z]/)==-1)
+            // {
+            //     document.getElementById('passs').innerHTML="**please write password of atleast 1 uppercase letter in the box";   
+            //     return false; 
+            // }  
+            // // atleast one special character 
+            // if(pass.search(/[!\@\#\$\%\^\&\*\(\)\-\_\+\=\;\?]/)==-1)
+            // {
+            //     document.getElementById('passs').innerHTML="**please write password of atleast 1 special character in the box";   
+            //     return false; 
+            // }   
+            // // not return same value so we used else
+            // else
+            // {
+            //     document.getElementById('passs').innerHTML="";  
+            // }
+            
+            if((user== "admin" && pass == "1234") && email== "admin@gmail.com"){ 
+                window.location.href = 'home.html';
+                alert("login successfull");  
+            }
+
+        else{
+             alert("pls enter correct details");        
+        }
+            }       
+    
+    </script> 
+
+    </body>
+    </html>

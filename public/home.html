@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BHARAT CENSUS</title>
+    <link rel="icon" type="image/x-icon" href="censuslogo.jpg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        /* body styling */
+ *{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Times New Roman', Times, serif;
+}
+        /* Navbar styling */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            background-color: #1a1047;
+font-size: 20px;
+text-transform: capitalize;        
+    padding: 10px 20px;
+        }
+
+        /* Navbar link styling */
+        .navbar a {
+            font-family: 'Times New Roman', Times, serif;
+            color: white;
+            text-decoration: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        /* Navbar link hover styling */
+        .navbar a:hover {
+            background-color: #555;
+        }
+    button {
+            color: #ffffff;
+            background-color: #1a1047;
+            padding:  12.5px 30px;
+            border: 0;
+            border-radius: 100px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.5s;
+            -webkit-transition: all 0.5s;
+        
+            
+        }
+        button:hover{
+            background-color: #00121e;
+            box-shadow:  0 0 20px #6fc5ff50;
+            transform: scale(1.1);
+        }
+        button:active {
+            background-color: #00121e;
+            transition: all 0.25s;
+            -webkit-transition: all 0.25s;
+            box-shadow: none;
+            transform: scale(0.98);
+        }
+   /* Slider styling */
+.slider {
+    width: 50%;
+    height: 500px; /* Set a fixed height for the slider */
+    overflow: hidden;
+}
+
+.slide {
+    display: none;
+    width: 100%;
+    height: 100%; /* Set slide height to 100% */
+}
+
+.slide img {
+    width: 100%;
+    height: 100%; /* Set image height to 100% */
+    object-fit: cover; /* Ensure images cover the entire slide without distortion */
+}
+
+.active {
+    display: block;
+}
+
+h1 {
+            font-size: 3.5rem;
+            color: #010b11;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);}
+    </style>
+</head>
+<body>
+    <center>
+        <img src="logo-census-nyear.png" height="135PX" width="1200px">
+    <br>
+    <br>
+    <br> </center>
+
+<div class="navbar">
+    <a href="home.html"> Home</a>
+        <a href="PopulationDetails.html"><i class="fa-solid fa-person-arrow-up-from-line"></i> Population Details </a>
+        <a href="sexratio.html"> Sex Ratio </a>
+        <a href="religion.html"></i>Religion-wise Details </a>
+        <a href="maritalstatus.html"> Marital Status </a>
+        <a href="literate.html"> Literacy Rate </a>
+        <a href="disability.html"> Disability Status </a> 
+        <a href="userdetail.html"> User Details</a>
+        <a href="register.html"><i class="fa-solid fa-user"></i> New User</a>
+        <a href="aboutus.html">  About Us </a>
+        <a href="contactus.html">  Contact Us </a>
+        <a href="updatedetails.html"> Update Details </a>
+</div>
+        <br>
+        <br>
+    <center>  <H1>Welcome to Census Of India</H1> </center>
+     <center>   
+        <!-- <img src="censuslogo.jpg" height="300px" width="300px" ><br><h1>  -->
+            <div class="slider">
+                <div class="slide active">
+                    <img src="population-census-2021.jpg" alt="Image 1">
+                </div>
+                <div class="slide">
+                    <img src="census3.jpg" alt="Image 2">
+                </div>
+                <div class="slide">
+                    <img src="CENSUS67.jpg" alt="Image 3">
+                </div>
+                <div class="slide">
+                    <img src="census4.avif" alt="Image 4">
+                </div>
+            </div>
+            <br><br>
+              <button  type="button" onclick="location.href='register.html'">Create a New User</button> 
+    </center>
+   
+    <script>
+        let slideIndex = 0;
+        showSlides();
+    
+        function showSlides() {
+            let slides = document.getElementsByClassName("slide");
+            
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            
+            slideIndex++;
+            
+            if (slideIndex > slides.length) {
+                slideIndex = 1;
+            }
+            
+            slides[slideIndex - 1].style.display = "block";
+            
+            setTimeout(showSlides, 2000); // Change image every 3 seconds
+        }
+    </script>
+    
+</body>
+</html> 

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetch Aadhar Details</title>
+    <style>
+        .chat-container {
+            width: 300px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .chat-message {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        .chat-button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        /* Navbar styling */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            background-color: #1a1047;
+            font-size: 20px;
+            text-transform: capitalize;
+            padding: 10px 20px;
+        }
+
+        /* Navbar link styling */
+        .navbar a {
+            font-family: 'Times New Roman', Times, serif;
+            color: white;
+            text-decoration: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        /* Navbar link hover styling */
+        .navbar a:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+
+<body>
+    <center>
+        <img src="logo-census-nyear.png" height="135PX" width="1200px">
+        <br>
+        <br>
+        <br>
+    </center>
+    <div class="navbar">
+        <a href="home.html"> Home</a>
+        <a href="PopulationDetails.html"><i class="fa-solid fa-person-arrow-up-from-line"></i> Population Details </a>
+        <a href="sexratio.html"> Sex Ratio </a>
+        <a href="religion.html"></i>Religion-wise Details </a>
+        <a href="maritalstatus.html"> Marital Status </a>
+        <a href="literate.html"> Literacy Rate </a>
+        <a href="disability.html"> Disability Status </a> <br> <Br>
+        <a href="userdetail.html"> User Details</a>
+        <a href="register.html"><i class="fa-solid fa-user"></i> New User</a>
+        <a href="aboutus.html"> About Us </a>
+        <a href="contactus.html"> Contact Us </a>
+        <a href="updatedetails.html"> Update Details </a>
+    </div>
+    <br>
+    <div class="chat-container">
+        <div class="chat-message">
+            <label for="aadharNumber">Enter Aadhar Number:</label>
+            <input type="text" id="aadharNumber" name="aadharNumber" placeholder="Enter Aadhar Number">
+        </div>
+        <button class="chat-button" onclick="fetchDetails()"  window.location.href="fetchDetails.html">Fetch Details </button>
+    </div>
+    
+    </body>
+
+</html>

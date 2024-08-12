@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BHARAT CENSUS</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="icon" type="image/x-icon" href="censuslogo.jpg">
+
+    <style>
+        .image-with-text {
+            display: flex;
+            align-items: center;
+            margin-bottom: 50px;
+        }
+
+        .image-with-text img {
+            width: 170px;
+            height: 170px;
+            margin-right: 60px;
+            margin-left: 500px;
+
+        }
+        button {
+    color: #ffffff;
+  align-items: center;
+    background-color: #1a1047;
+    padding:  12.5px 30px;
+    border: 0;
+    border-radius: 100px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+
+    
+}
+button:hover{
+    background-color: #00121e;
+    box-shadow:  0 0 20px #6fc5ff50;
+    transform: scale(1.1);
+}
+button:active {
+    background-color: #00121e;
+    transition: all 0.25s;
+    -webkit-transition: all 0.25s;
+    box-shadow: none;
+    transform: scale(0.98);}
+    *{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Times New Roman', Times, serif;
+}
+        /* Navbar styling */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            background-color: #1a1047;
+font-size: 20px;
+text-transform: capitalize;        
+    padding: 10px 20px;
+        }
+
+        /* Navbar link styling */
+        .navbar a {
+            font-family: 'Times New Roman', Times, serif;
+            color: white;
+            text-decoration: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        /* Navbar link hover styling */
+        .navbar a:hover {
+            background-color: #555;
+        }
+        h1 {
+            font-size: 2.5rem;
+            color: #2ba8fb;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        table {
+        width: 30%;
+        margin: 0 auto;
+        border-collapse: collapse;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        background-color: #fff;
+    }
+    th, td {
+        padding: 8px 10px;
+        text-align: left;
+    }
+    th {
+        background-color: #050505;
+        color: #fff;
+    }
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+    tr:hover {
+        background-color: #ddd;
+    }
+    #userDataBody {
+        text-align: center;
+    }
+
+
+    </style>
+</head>
+
+<body>
+    <center>
+        <img src="logo-census-nyear.png" height="135PX" width="1200px">
+    <br>
+    <br>
+    <br> </center>
+
+<div class="navbar">
+    <a href="home.html"> Home</a>
+        <a href="PopulationDetails.html"><i class="fa-solid fa-person-arrow-up-from-line"></i> Population Details </a>
+        <a href="sexratio.html"> Sex Ratio </a>
+        <a href="religion.html"></i>Religion-wise Details </a>
+        <a href="maritalstatus.html"> Marital Status </a>
+        <a href="literate.html"> Literacy Rate </a>
+        <a href="disability.html"> Disability Status </a> <br> <Br>
+        <a href="userdetail.html"> User Details</a>
+        <a href="register.html"><i class="fa-solid fa-user"></i> New User</a>
+        <a href="aboutus.html">  About Us </a>
+        <a href="contactus.html">  Contact Us </a>
+        <a href="updatedetails.html"> Update Details </a>
+</div><br><br>
+        <div id="content">
+            <center><h1>
+                <span style="color: #000000;">Literacy Rate Details
+            </h1></center>	
+            <table>
+              <tr>
+      <td>		 <div style="text-align: center;">
+              <canvas id="myPieChart" width="400" height="310"></canvas>
+              <ul id="legend" style="list-style-type: none; padding: 0;"></ul>
+          </div>
+      </td>
+       
+
+
+      
+     
+      <!-- <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td> -->
+
+      <td>			
+      <table align="center" border="1px">
+          <tr>
+              <th> VALUE </th>
+              <th> COUNT </th>
+          </tr>
+          <tr>
+              <td>Literate</td>
+              <td id="Literate"></td>
+          </tr>
+          <tr>
+              <td>Illiterate</td>
+              <td id="Illiterate"></td>
+          </tr>
+          
+          <tr>
+              <td>Total Population</td>
+              <td id="total"></td>
+          </tr>
+      </table>
+              
+      </td>	
+       
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td><img src="literacyratelogo.png" alt="img" height="170px" width="170px" ></td>	
+
+      </tr>
+      
+      </table>
+      <br>
+   
+      
+
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
+        import { getDatabase, ref, get } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-database.js";
+
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyDT6uJbmKsx6RTPieWPuEY4_71MAIzcv0s",
+            authDomain: "bhartiye-census.firebaseapp.com",
+            databaseURL: "https://bhartiye-census-default-rtdb.firebaseio.com",
+            projectId: "bhartiye-census",
+            storageBucket: "bhartiye-census.appspot.com",
+            messagingSenderId: "88437168542",
+            appId: "1:88437168542:web:8fa763e02d516e94501e8f",
+            measurementId: "G-9P39SLQPS3"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+
+        // Get a reference to the "user" node in the database
+        const userRef = ref(getDatabase(app), 'Census Entry');
+
+
+        // Initialize counts array
+        const counts = [0, 0,]; // Index 0 for male, index 1 for female, index 2 for other
+
+        // Retrieve data from the database
+        get(userRef).then((snapshot) => {
+            if (snapshot.exists()) {
+                // Iterate through each child node (each user)
+                snapshot.forEach((childSnapshot) => {
+                    // Retrieve the data for each user
+                    const userData = childSnapshot.val();
+
+                    // Increment count based on gender
+                    if (userData.literacyStatus === 'Illiterate') {
+                        counts[0]++;
+                    } else if (userData.literacyStatus === 'Literate') {
+                        counts[1]++;
+                    }
+
+
+                });
+
+                // Log the counts
+                console.log(counts);
+                var total = counts[0] + counts[1];
+                console.log(total);
+
+
+
+
+                //  code for table
+
+
+                var cell = document.getElementById("Literate");
+                cell.innerHTML = counts[0];
+
+                var cell = document.getElementById("Illiterate");
+                cell.innerHTML = counts[1];
+
+                var cell = document.getElementById("total");
+                cell.innerHTML = total;
+
+
+
+
+
+                const percent = [(counts[0] / total * 100), (counts[1] / total * 100),,
+                                 ]; // Index 0 for male, index 1 for female, index 2 for other
+
+
+                var data = {
+                    labels: ["Illiterate", "Literate"],
+                    datasets: [{
+                        data: percent,
+                        backgroundColor: [
+                            'red',
+                            'blue',
+                        ]
+                    }]
+                };
+
+                // Configuration options
+                var options = {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    tooltips: {
+                        callbacks: {
+                            label: function (tooltipItem, data) {
+                                var dataset = data.datasets[tooltipItem.datasetIndex];
+                                var total = dataset.data.reduce(function (previousValue, currentValue, currentIndex, array) {
+                                    return previousValue + currentValue;
+                                });
+                                var currentValue = dataset.data[tooltipItem.index];
+                                var percentage = Math.round((currentValue / total) * 100);
+                                return percentage + '%';
+                            }
+                        }
+                    }
+                };
+
+                // Get the context of the canvas element we want to select
+                var ctx = document.getElementById("myPieChart").getContext('2d');
+
+                // Create the pie chart
+                var myPieChart = new Chart(ctx, {
+                    type: 'pie',
+                    data: data,
+                    options: options
+                });
+            } else {
+                console.log("No data available");
+            }
+        }).catch((error) => {
+            console.error("Error fetching data:", error);
+        });
+
+    </script>
+
+
+
+
+
+</div>
+
+
+<center> <button  type="button" onclick="location.href='home.html'">Go to Home</button> &nbsp; 
+
+
+    <button  type="button" onclick="location.href='religion.html'">Go to Religion-wise details</button> &nbsp; 
+    
+<button id="downloadBtn" onclick="downloadPDF()">Download as PDF</button>
+</center>
+
+
+
+<script src="https://rawgit.com/eKoopmans/html2pdf/master/dist/html2pdf.bundle.js"></script>
+<script>
+function downloadPDF() {
+var element = document.getElementById('content');
+html2pdf(element, {
+    margin: 1,
+    filename: 'bharat_census.pdf',
+    image: { type: 'jpeg', quality: 0.98 },
+    html2canvas: { dpi: 192, letterRendering: true },
+    jsPDF: { unit: 'in', format: 'letter', orientation: 'landscape' }
+});
+} 
+
+</script>
+
+</body>
+
+</html>

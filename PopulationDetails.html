@@ -1,0 +1,109 @@
+<html>
+
+<head>
+    <title>Firebase_form</title>
+    <link rel="icon" type="image/x-icon" href="censuslogo.jpg">
+</head>
+
+<body><Br>
+    <table border="1" 
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Head of family</th>
+                <th> Relationship with Head</th>
+                <th>Aadhar Number</th>
+                <th>Gender</th>
+                <th>Father Name</th>
+                <th> Religion</th>
+                <th> Caste</th>
+                <th> Literacy Status</th>
+                <th>Last class studies</th>
+                <th>Marital status</th>
+                <th>Age at marriage</th>
+                <th>Mother tongue</th>
+                <th>Other language known</th>
+                <th>Date of Birth</th>
+                <th>Age</th>
+                <th>Occupation</th>
+                <th>Address</th>
+                <th>District</th>
+                <th>State</th>
+                <th>birth Mark</th>
+                <th>Disability</th>
+                <th>Type of Disability</th>
+
+                <!-- Add more columns as needed -->
+            </tr>
+        </thead>
+        <tbody id="userDataBody">
+            <!-- User data will be populated here -->
+        </tbody>
+    </table>
+
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
+        import { getDatabase, ref, get } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-database.js";
+
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyDT6uJbmKsx6RTPieWPuEY4_71MAIzcv0s",
+            authDomain: "bhartiye-census.firebaseapp.com",
+            databaseURL: "https://bhartiye-census-default-rtdb.firebaseio.com",
+            projectId: "bhartiye-census",
+            storageBucket: "bhartiye-census.appspot.com",
+            messagingSenderId: "88437168542",
+            appId: "1:88437168542:web:8fa763e02d516e94501e8f",
+            measurementId: "G-9P39SLQPS3"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+
+        // Get a reference to the "user" node in the database
+        const userRef = ref(getDatabase(app), 'Census Entry');
+
+        // Retrieve data from the database
+        get(userRef).then((snapshot) => {
+            const userDataBody = document.getElementById('userDataBody');
+
+            if (snapshot.exists()) {
+                // Iterate through each child node (each user)
+                snapshot.forEach((childSnapshot) => {
+                    // Retrieve the data for each user
+                    const userData = childSnapshot.val();
+
+                    // Create a new row for the user data
+                    const row = document.createElement('tr');
+
+                    // Populate the row with user data
+                    row.innerHTML = `
+                        <td>${userData.name}</td>
+                        <td>${userData.age}</td>
+                        <td>${userData.state}</td>
+                        <td>${userData.aadharNo}</td>
+                        <td>${userData.ageAtMarriage}</td>
+                        <td>${userData.caste}</td>
+                        <td>${userData.address}</td>
+                        <td>${userData.dateOfBirth}</td>
+                   
+:
+
+                        <!-- Add more columns as needed -->
+                    `;
+
+                    // Append the row to the table body
+                    userDataBody.appendChild(row);
+                });
+            } else {
+                console.log("No data available");
+            }
+        }).catch((error) => {
+            console.error("Error fetching data:", error);
+        });
+
+    </script>
+</body>
+
+</html>
